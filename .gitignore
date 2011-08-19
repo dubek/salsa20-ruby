@@ -1,0 +1,8 @@
+*.o
+*.bundle
+*.so
+ext/salsa20/Makefile
+doc
+pkg
+*.class
+tmp/

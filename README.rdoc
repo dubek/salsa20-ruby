@@ -1,0 +1,52 @@
+= salsa20
+
+Ruby-wrapper for the {Salsa20 stream cipher
+algorithm}[http://cr.yp.to/snuffle.html] designed by Daniel Bernstein. Salsa20
+is a family of 256-bit stream ciphers designed in 2005 and submitted to
+eSTREAM, the ECRYPT Stream Cipher Project.
+
+== How to install
+
+  gem install salsa20
+
+You'll need a working compiler -- the crypto code is the {original C
+implementation}[http://cr.yp.to/snuffle.html] from Daniel Bernstein.
+
+== Usage
+
+  require 'salsa20'
+  
+  key = "VERY_SECRET_256_BIT_KEY_12345678"
+  iv = "-RANDOM-"
+  plain_text = "Salsa20 is a family of 256-bit stream ciphers"
+  
+  encryptor = Salsa20.new(key, iv)
+  encrypted_text = encryptor.encrypt(plain_text)
+  p encrypted_text
+  # => "\x9D\x1C\xE4\x83\xAB\x8E\xB7\x85a,\xC3\xF6\x981*\x03\b-\x99\xAD\xDF\xBFS\x96\x94$\xA0\xF0U\v\xABz;=R\xBB\xE1\xB0\xDD\xBC\x1A9\xB8\xBEb"
+  
+  decryptor = Salsa20.new(key, iv)
+  decrypted_text = decryptor.decrypt(encrypted_text)
+  p decrypted_text
+  # => "Salsa20 is a family of 256-bit stream ciphers"
+
+The Salsa20 cipher algorhitm supports efficiently seeking to any 64-bytes
+boundry position in the stream using the +seek+ method. Use +position+ to tell
+the current stream position in bytes.
+
+For more information, see the detailed rdoc of the Salsa20 class.
+
+== References
+
+* http://cr.yp.to/snuffle.html
+* http://www.ecrypt.eu.org/stream/salsa20pf.html
+* http://en.wikipedia.org/wiki/Salsa20
+
+== License
+
+BSD 2-Clause open source license (full license text in the +LICENSE+ file).
+
+== Contact
+
+Author           :: Dov Murik (dov.murik@gmail.com)
+Project homepage :: https://github.com/dubek/salsa20-ruby
