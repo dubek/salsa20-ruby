@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.has_rdoc = true
   s.rdoc_options += ['--title', 'salsa20', '--main', 'README.rdoc']
-  s.extra_rdoc_files += ['README.rdoc', 'LICENSE', 'CHANGELOG', *Dir["lib/*.rb"], *Dir['ext/salsa20/salsa20_ext.c']]
+  s.extra_rdoc_files += ['README.rdoc', 'LICENSE', 'CHANGELOG', 'lib/salsa20.rb']
 
   s.extensions = 'ext/salsa20/extconf.rb'
 
