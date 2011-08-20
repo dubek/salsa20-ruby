@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.rdoc_options += ['--title', 'salsa20', '--main', 'README.rdoc']
   s.extra_rdoc_files += ['README.rdoc', 'LICENSE', 'CHANGELOG', 'lib/salsa20.rb']
 
-  s.extensions = 'ext/salsa20/extconf.rb'
+  s.extensions = 'ext/salsa20_ext/extconf.rb'
 
   s.authors = ["Dov Murik"]
   s.email = "dov.murik@gmail.com"
