@@ -13,8 +13,9 @@ Gem::Specification.new do |s|
 
   s.test_files = `git ls-files test`.split("\n")
 
-  s.add_development_dependency 'rdoc'
+  s.add_development_dependency 'rake'
   s.add_development_dependency 'rake-compiler'
+  s.add_development_dependency 'rdoc'
 
   s.has_rdoc = true
   s.rdoc_options += ['--title', 'salsa20', '--main', 'README.rdoc']
