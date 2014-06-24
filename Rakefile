@@ -3,6 +3,8 @@ require 'rdoc/task'
 require 'rake/extensiontask'
 require 'rake/testtask'
 
+task :default => [:compile, :test, :rdoc]
+
 GEMSPEC = eval(File.read(File.expand_path("../salsa20.gemspec", __FILE__)))
 
 Rake::ExtensionTask.new('salsa20_ext')
