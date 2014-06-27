@@ -1,3 +1,9 @@
+0.1.1  Jun 27 2014
+
+- Fix tests on Ruby 1.9.x
+- Add bundler support to ease development
+- Add Travis CI config file
+
 0.1.0  Aug 20 2011
 
 - Initial release
