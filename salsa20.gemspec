@@ -26,4 +26,5 @@ Gem::Specification.new do |s|
   s.authors = ["Dov Murik"]
   s.email = "dov.murik@gmail.com"
   s.homepage = "https://github.com/dubek/salsa20-ruby"
+  s.license = "MIT"
 end
