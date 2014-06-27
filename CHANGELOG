@@ -3,6 +3,7 @@
 - Fix tests on Ruby 1.9.x
 - Add bundler support to ease development
 - Add Travis CI config file
+- Detailed dependencies versions
 
 0.1.0  Aug 20 2011
 
