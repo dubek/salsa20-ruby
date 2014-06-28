@@ -44,7 +44,7 @@ For more information, see the detailed rdoc of the Salsa20 class.
 
 == License
 
-BSD 2-Clause open source license (full license text in the +LICENSE+ file).
+MIT open source license (full license text in the +LICENSE+ file).
 
 == Contact
 
