@@ -1,7 +1,7 @@
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "lib", "salsa20"))
 require 'minitest/autorun'
 
-class Salsa20Test < MiniTest::Unit::TestCase
+class Salsa20Test < MiniTest::Test
   def test_salsa20_keystream
     expected = "@\x8D\x94\xF48f9Z)\e\xBD\xB8?\xCC\xEC\xD6g\xB3;\xC7ev\v\xCA]\xEE\x19I;\xA2<\\^\xCEFQn\x94B{+\x06\xE2\x85\x9F\xEC\xBBp@\xA4\x8F\xD8~\xD3\x12\x197\f\xD7'\x8C\xC8\xEF\xFC"
     if expected.respond_to?(:force_encoding)
