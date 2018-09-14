@@ -9,6 +9,22 @@
 
 /* Guess the endianness of the target architecture. */
 
+/* First try to look for precompiler hints */
+#if defined(__BYTE_ORDER__) && defined(__ORDER_LITTLE_ENDIAN__) \
+    && defined(__ORDER_BIG_ENDIAN__)
+
+#if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+#define ECRYPT_LITTLE_ENDIAN
+#elif __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+#define ECRYPT_BIG_ENDIAN
+#endif
+
+#endif
+
+#if !defined(ECRYPT_BIG_ENDIAN) && !defined(ECRYPT_LITTLE_ENDIAN)
+
+/* No precompiler hints, fallback to best guess method */
+
 /* 
  * The LITTLE endian machines:
  */
@@ -30,10 +46,18 @@
 /* 
  * The BIG endian machines: 
  */
-#elif defined(sun)              /* Newer Sparc's */
-#define ECRYPT_BIG_ENDIAN
 #elif defined(__ppc__)          /* PowerPC */
 #define ECRYPT_BIG_ENDIAN
+
+/*
+ * Machines that can be either:
+ */
+#elif defined(sun)
+#if defined(__sparc)
+#define ECRYPT_BIG_ENDIAN
+#else
+#define ECRYPT_LITTLE_ENDIAN
+#endif
 
 /* 
  * Finally machines with UNKNOWN endianness:
@@ -51,6 +75,8 @@
 #else	                        /* Any other processor */
 #define ECRYPT_UNKNOWN
 #endif
+
+#endif /* if !defined(ECRYPT_LITTLE_ENDIAN) ... */
 
 /* ------------------------------------------------------------------------- */
 
