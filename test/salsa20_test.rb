@@ -140,4 +140,37 @@ class Salsa20Test < MiniTest::Test
     encryptor.seek(large_position)
     assert_equal large_position, encryptor.position
   end
+
+  # https://cr.yp.to/snuffle/salsafamily-20071225.pdf section 4.1
+  def test_vector_from_salsa20_family_paper
+    # From the paper:
+    #
+    #   For example, here is the starting array for key (1, 2, 3, 4, 5, ..., 32),
+    #   nonce (3, 1, 4, 1, 5, 9, 2, 6), and block 7:
+    #
+    the_key = (1..32).to_a.pack("C*")
+    the_iv = [3, 1, 4, 1, 5, 9, 2, 6].pack("C*")
+    seek_block = 7
+
+    encryptor = Salsa20.new(the_key, the_iv)
+    encryptor.seek(seek_block * 64)
+    # To obtain the keystream, encrypt a plaintext of zeroes:
+    cipher_text = encryptor.encrypt("\x00" * 64)
+
+    # The encrypted test vector from section 4.1:
+    #
+    #   0xb9a205a3, 0x0695e150, 0xaa94881a, 0xadb7b12c,
+    #   0x798942d4, 0x26107016, 0x64edb1a4, 0x2d27173f,
+    #   0xb1c7f1fa, 0x62066edc, 0xe035fa23, 0xc4496f04,
+    #   0x2131e6b3, 0x810bde28, 0xf62cb407, 0x6bdede3d.
+    #
+    # The author presented it as little-endian words; here we treat it as
+    # a string of bytes:
+    expected = "\xa3\x05\xa2\xb9\x50\xe1\x95\x06\x1a\x88\x94\xaa\x2c\xb1\xb7\xad" +
+      "\xd4\x42\x89\x79\x16\x70\x10\x26\xa4\xb1\xed\x64\x3f\x17\x27\x2d" +
+      "\xfa\xf1\xc7\xb1\xdc\x6e\x06\x62\x23\xfa\x35\xe0\x04\x6f\x49\xc4" +
+      "\xb3\xe6\x31\x21\x28\xde\x0b\x81\x07\xb4\x2c\xf6\x3d\xde\xde\x6b"
+    expected.force_encoding(Encoding::BINARY)
+    assert_equal expected, cipher_text
+  end
 end
