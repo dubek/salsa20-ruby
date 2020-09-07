@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake-compiler', '~> 1.0'
   s.add_development_dependency 'rdoc', '~> 6.0'
 
-  s.has_rdoc = true
   s.rdoc_options += ['--title', 'salsa20', '--main', 'README.rdoc']
   s.extra_rdoc_files += ['README.rdoc', 'LICENSE', 'CHANGELOG', 'lib/salsa20.rb']
 
