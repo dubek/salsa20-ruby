@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.test_files = `git ls-files test`.split("\n")
 
   s.add_development_dependency 'minitest', "~> 5.0"
-  s.add_development_dependency 'rake', '~> 12.0'
+  s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'rake-compiler', '~> 1.0'
   s.add_development_dependency 'rdoc', '~> 6.0'
 
