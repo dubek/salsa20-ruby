@@ -1,0 +1,27 @@
+name: Windows
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        ruby-version: ['2.7', '3.0']
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Build gem
+      run: bundle exec gem build salsa20.gemspec
+    - name: Build gem
+      run: bundle exec gem install salsa20-*.gem
+      
