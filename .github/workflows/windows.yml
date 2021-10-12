@@ -22,6 +22,5 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Build gem
       run: bundle exec gem build salsa20.gemspec
-    - name: Build gem
-      run: bundle exec gem install salsa20-*.gem
-      
+    - name: Install gem
+      run: bundle exec gem install --verbose ./salsa20-*.gem
